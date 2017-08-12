@@ -1,0 +1,18 @@
+<% for(var i=0; i<sku.length; i++) {%>
+    <li class="col-xs-6 col-md-3 product m-product">
+        <a href="/product/detail?product=<%= sku[i].id%>" class="product-link">
+            <div class="img-bg-color primary">
+                <!-- / product-link -->
+                <img src="/images/product/<%= sku[i].image[0].img_id%>.JPG" alt="">
+                <!-- / product-image -->
+
+                <!-- product-details -->
+                <div class="product-details">
+                    <h5 class="product-title"><%= sku[i].name %></h5>
+                    <p class="product-category"><%= sku[i].brand.brand_ename %></p>
+                </div><!-- / product-details -->
+            </div><!-- / img-bg-color -->
+        </a>
+    </li>
+    <!-- / product -->
+<% } %>

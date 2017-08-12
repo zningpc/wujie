@@ -1,0 +1,109 @@
+<% include ../common/header-nobanner %>
+<section id="shop">
+    <div class="container space-top-30">
+        <div class="row">
+
+            <!-- product content area -->
+            <div class="col-sm-6 product-content-area space-top-30">
+                <div class="product-content-area space-top-30">
+                    <div id="product-slider" class="carousel slide" data-ride="carousel">
+                        <!-- wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                        <% for (var i= 0; i<sku.image.length; i++) {%>
+                            <div class="item <% if (i==0) {%>active<% } %>">
+                                <img src="/<%= sku.image[i].href%>" alt="">
+                            </div>
+                        <% } %>
+                        </div>
+                        <!-- / wrapper for slides -->
+
+                        <!-- controls -->
+                        <% if (sku.image.length > 1) {%>
+                        <a class="left carousel-control" href="#product-slider" role="button" data-slide="prev">
+                            <span class="lnr lnr-chevron-left" aria-hidden="true"></span>
+                        </a>
+                        <a class="right carousel-control" href="#product-slider" role="button" data-slide="next">
+                            <span class="lnr lnr-chevron-right" aria-hidden="true"></span>
+                        </a>
+                        <% } %>
+                        <!-- / controls -->
+                    </div><!-- / product-slider -->
+                </div><!-- / product-content-area -->
+
+            </div>
+            <!-- / product-content-area -->
+
+            <!-- product sidebar area -->
+            <div class="col-sm-6 product-sidebar space-top-30">
+                <div class="product-sidebar-details space-top-30">
+                    <h4><%= sku.name%></h4>
+                    <p><%= sku.brand.brand_desc%></p>
+                    <div class="product-info">
+                        <div class="info">
+                            <p><i class="lnr lnr-heart"></i><span>类目: <a href="#"> <%= sku.category.cat_name%></a></span></p>
+                        </div>
+                        <div class="info">
+                            <p><i class="lnr lnr-heart"></i><span>品牌: <a href="/product/list?brands=<%= sku.brand.id%>"> <%= sku.brand.brand_ename%></a></span></p>
+                        </div>
+                        <div class="info">
+                            <p><i class="lnr lnr-menu"></i><span>材质: <%= sku.material%></span></p>
+                        </div>
+                        <div class="info">
+                            <p><i class="lnr lnr-star"></i><span>Reviews: <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star-half-o"></i></span></p>
+                        </div>
+                    </div><!-- / product-info -->
+                </div><!-- product-details -->
+
+            </div><!-- / col-sm-4 col-md-3 -->
+            <!-- / product sidebar area -->
+
+        </div><!-- / row -->
+        <div id="related-products">
+            <h4 class="space-top-30 space-bottom-30 space-left">相关推荐</h4>
+            <ul class="row shop list-unstyled" id="grid">
+                <!-- product -->
+                <% if (sku.related.length<=3) {%>
+                    <% for (var i=0; i<sku.related.length;i++) {%>
+                        <li class="col-xs-12 col-md-4 product m-product" data-groups='["bedroom"]'>
+                            <div class="img-bg-color primary">
+                                <!-- <h5 class="product-price">$249</h5> -->
+                                <a href="javascript:;" class="product-link">
+                                <!-- / product-link -->
+                                <img width=360 height=360 src="<%= sku.related[i].url%>" alt="">
+                                <!-- / product-image -->
+                                <!-- product-details -->
+                                <div class="product-details">
+                                    <h5 class="product-title"><%= sku.related[i].name%></h5>
+                                    <p class="product-category"><%= sku.related[i].brand_ename%></p>
+                                </div><!-- / product-details -->
+                                </a>
+                            </div><!-- / img-bg-color -->                    
+                        </li>
+                    <% } %>
+
+                <%} else {%>
+                <!-- product -->
+                    <% for (var i=0; i<3;i++) {%>
+                        <li class="col-xs-12 col-md-4 product m-product" data-groups='["bedroom"]'>
+                            <div class="img-bg-color primary">
+                                <!-- <h5 class="product-price">$249</h5> -->
+                                <a href="javascript:;" class="product-link">
+                                <!-- / product-link -->
+                                <img width=360 height=360 src="<%= sku.related[i].url%>" alt="">
+                                <!-- / product-image -->
+                                <!-- product-details -->
+                                <div class="product-details">
+                                    <h5 class="product-title"><%= sku.related[i].name%></h5>
+                                    <p class="product-category"><%= sku.related[i].brand_ename%></p>
+                                </div><!-- / product-details -->
+                                </a>
+                            </div><!-- / img-bg-color -->                    
+                        </li>
+                    <% } %>
+                <% } %>
+                <!-- / product -->
+            </ul><!-- / row -->
+        </div><!-- / related-products -->
+    </div><!-- / container -->
+</section>
+<% include ../common/footer %>

@@ -1,0 +1,46 @@
+<% include ../common/header %>
+<section id="shop" class="space-top-30">
+    <div class="container">
+<!--         <p class="shop-results space-left">Showing <strong>1-12</strong> of <strong>36</strong> items. 
+            <span class="pull-right space-right">
+                <select class="selectpicker">
+                    <optgroup label="Sort By:">
+                        <option>Default</option>
+                        <option>Popularity</option>
+                        <option>Newness</option>
+                        <option>Rating</option>
+                        <option>Price Low to High</option>
+                        <option>Price High to Low</option>
+                    </optgroup>
+                </select>
+            </span>
+        </p> -->
+        <ul class="row shop list-unstyled" id="grid">
+            <% for(var i=0; i<brands.length; i++) {%>
+                <li class="col-xs-4 col-md-3 product m-product">
+                    <a href="/product/list?brands=<%= brands[i].id%>" class="product-link">
+                        <div class="img-bg-color primary">
+                            <!-- / product-link -->
+                            <img src="/images/brand/<%= brands[i].id%>.JPG" alt="">
+                            <!-- / product-image -->
+
+                            <!-- product-details -->
+                            <div class="product-details">
+                                <h5 class="product-title"><%= brands[i].brand_ename %></h5>
+                                <p class="product-category"><%= brands[i].tags %></p>
+                            </div><!-- / product-details -->
+                        </div><!-- / img-bg-color -->
+                    </a>
+                </li>
+                <!-- / product -->
+            <% } %>
+            <!-- sizer -->
+
+        </ul> <!-- / products -->
+<!--         <div class="text-center more-button space-top-30">
+            <a href="/brands/list" class="btn btn-default-filled"><i class="lnr lnr-sync"></i><span>加载更多</span></a>
+        </div> -->
+    </div><!-- / container -->
+
+</section>
+<% include ../common/footer %>

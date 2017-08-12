@@ -1,0 +1,36 @@
+<% include ../common/header %>
+<section id="shop" class="space-top-30">
+    <div class="container">
+        <div role="tabpanel" class="tab-pane animated fadeIn active" id="description">
+            <%if (brand) {%>
+            <p><%= brand.brand_desc%></p>
+            <% } %>
+        </div>
+        <ul class="row shop list-unstyled" id="grid">
+            <% for(var i=0; i<sku.length; i++) {%>
+                <li class="col-xs-6 col-md-4 product m-product" data-groups='["mens"]'>
+                    <a href="/product/detail?product=<%= sku[i].id%>" class="product-link">
+                        <div class="img-bg-color primary">
+                            <!-- / product-link -->
+                            <img src="/images/product/<%= sku[i].image[0].img_id%>.JPG" alt="">
+                            <!-- / product-image -->
+
+                            <!-- product-details -->
+                            <div class="product-details">
+                                <h5 class="product-title"><%= sku[i].name %></h5>
+                                <p class="product-category"><%= sku[i].brand.brand_ename %></p>
+                            </div><!-- / product-details -->
+                        </div><!-- / img-bg-color -->
+                    </a>
+                </li>
+                <!-- / product -->
+            <% } %>
+            <!-- sizer -->
+            <li class="col-xs-6 col-md-4 shuffle_sizer"></li>
+            <!-- / sizer -->
+
+        </ul> <!-- / products -->
+    </div><!-- / container -->
+
+</section>
+<% include ../common/footer %>

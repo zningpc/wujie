@@ -1,0 +1,68 @@
+<% include ../common/header %>
+<section id="shop" class="space-top-30">
+    <div class="container">
+        <div role="tabpanel" class="tab-pane animated fadeIn active" id="description">
+            <%if (brand) {%>
+            <p><%= brand.brand_desc%></p>
+            <% } %>
+        </div>
+        <ul class="row shop list-unstyled" id="grid">
+            <% for(var i=0; i<sku.length; i++) {%>
+                <li class="col-xs-6 col-md-3 product m-product" style="border: 1px solid #">
+                    <a href="/product/detail?product=<%= sku[i].id%>" class="product-link">
+                        <div class="img-bg-color primary">
+                            <!-- / product-link -->
+                            <img src="/images/product/<%= sku[i].image[0].img_id%>.JPG" alt="">
+                            <!-- / product-image -->
+
+                            <!-- product-details -->
+                            <div class="product-details">
+                                <h5 class="product-title"><%= sku[i].name %></h5>
+                                <p class="product-category"><%= sku[i].brand.brand_ename %></p>
+                            </div><!-- / product-details -->
+                        </div><!-- / img-bg-color -->
+                    </a>
+                </li>
+                <!-- / product -->
+            <% } %>
+        </ul> <!-- / products -->
+    </div><!-- / container -->
+</section>
+<script>
+    var limit = 10;
+    var num = 0;
+    $("#more").click(function(){
+        $.ajax({
+            url: '/product/pageList',
+            data: {
+                limit: limit,
+                num: num
+            },
+            success: function(res) {
+                num++;
+                // console.log(res);
+                // if (!res.length) {
+                //     $("#more").hide();
+                // } else {
+                //     var str = '';
+                //     for (var i=0,len=res.length;i<len;i++) {
+                //         str = str + '<li class="col-xs-6 col-md-4 product m-product shuffle-item filtered">\
+                //                 <a href="/product/detail?product='+res[i].id+'" class="product-link">\
+                //                     <div class="img-bg-color primary">\
+                //                         <img src="/images/product/'+res[i].image[0].img_id+'.JPG" alt="">\
+                //                         <div class="product-details">\
+                //                             <h5 class="product-title">'+res[i].name+'</h5>\
+                //                             <p class="product-category">'+res[i].brand.brand_ename+'</p>\
+                //                         </div>\
+                //                     </div>\
+                //                 </a>\
+                //             </li>';
+                //     }
+                //     $("#grid").append(str);
+                // }
+                $("#grid").append(res);
+            }
+        });
+    });
+</script>
+<% include ../common/footer %>

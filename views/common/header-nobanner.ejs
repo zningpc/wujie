@@ -1,0 +1,52 @@
+<!-- header -->
+<header>
+
+    <!-- nav -->
+    <nav class="navbar navbar-default nav-sec navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><img src="/images/logo.png" alt="logo"></a>
+            </div><!-- / navbar-header -->
+            <div class="secondary-nav">
+                <a href="login-register.html" class="my-account space-right"><span>400-614-0709</span></a>
+            </div>
+            <div class="navbar-collapse collapse text-center">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/"><span>首页</span></a></li>
+                    <li><a href="/product/list"><span>商品</span></a></li>
+                    <li><a href="/brands/list"><span>品牌</span></a></li>
+                    <li><a href="/flow"><span>如何购买</span></a></li>
+                    <!-- <li><a href="/news"><span>资讯</span></a></li> -->
+                    <li><a href="/faq"><span>常见问题</span></a></li>
+                    <li><a href="/about"><span>关于我们</span></a></li>
+                    <!-- <li><a href="/about"><span>客服电话</span></a></li> -->
+                </ul>
+            </div><!--/ nav-collapse -->
+        </div><!-- / container -->
+    </nav>
+    <!-- / nav -->
+</header>
+<!-- / header -->
+<script>
+    var url = window.location.href;
+    $(".nav li").removeClass('active');
+    if (url.indexOf('product')>0) {
+        $(".nav li").eq(1).addClass('active');
+    } else if (url.indexOf('flow')>0) {
+        $(".nav li").eq(3).addClass('active');
+    } else if (url.indexOf('brands')>0) {
+        $(".nav li").eq(2).addClass('active');
+    } else if (url.indexOf('about')>0) {
+        $(".nav li").eq(5).addClass('active');
+    } else if (url.indexOf('faq')>0) {
+        $(".nav li").eq(4).addClass('active');
+    } else {
+        $(".nav li").eq(0).addClass('active');
+    }
+</script>
